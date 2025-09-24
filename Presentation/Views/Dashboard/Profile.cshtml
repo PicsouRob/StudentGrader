@@ -2,10 +2,8 @@
     ViewData["Title"] = "Mi Perfil";
 }
 
-<div class="">
-    <partial name="_HeaderPartial" />
-
-    <div class="bg-white shadow-xl pb-8 pt-12 lg:pt-16">
+<div class="w-full">
+    <div class="bg-white shadow pb-8">
         <div x-data="{ openSettings: false }" class="absolute right-12 mt-4">
             <div x-show="openSettings" class="bg-white absolute right-0 w-40 py-2 mt-1 border border-gray-200 shadow-2xl" style="display: none;">
                 <div class="py-2 border-b">
@@ -45,7 +43,5 @@
             <p class="text-gray-700">@User.Identity?.Name</p>
         </div>
     </div>
-
-    <partial name="_FooterPartial" />
 </div>
 

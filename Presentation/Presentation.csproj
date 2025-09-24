@@ -27,12 +27,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Views\Auth\" />
-    <None Remove="Views\Profile\" />
     <None Remove="Views\Dashboard\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Auth\" />
-    <Folder Include="Views\Profile\" />
     <Folder Include="Views\Dashboard\" />
   </ItemGroup>
 </Project>

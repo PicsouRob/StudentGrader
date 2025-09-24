@@ -15,11 +15,9 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        _logger.LogDebug(User.Identity!.IsAuthenticated.ToString());
-
-        if(!User.Identity!.IsAuthenticated)
+        if(User.Identity!.IsAuthenticated)
         {
-            //return RedirectToAction("Auth/Login");
+            return RedirectToAction("Index", "Dashboard");
         }
 
         return View();

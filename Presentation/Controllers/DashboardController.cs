@@ -8,6 +8,26 @@ namespace Presentation.Controllers
         {
             return View();
         }
+
+        public IActionResult Profile()
+        {
+            return View();
+        }
+
+        public IActionResult Grade()
+        {
+            return View();
+        }
+
+        public IActionResult Subject()
+        {
+            return View();
+        }
+
+        public IActionResult Student()
+        {
+            return View();
+        }
     }
 }
 
