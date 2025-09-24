@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Entities
 {
@@ -13,9 +12,6 @@ namespace Domain.Entities
 		[Required]
 		[EmailAddress]
 		public String? Email { get; set; }
-
-		[Required]
-		public String? HashedPassword { get; set; }
 	}
 }
 

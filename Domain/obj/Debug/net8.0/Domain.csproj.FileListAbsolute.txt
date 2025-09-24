@@ -5,6 +5,7 @@
 /Users/phanordroberto/Projects/StudentGrading/Domain/obj/Debug/net8.0/Domain.AssemblyInfoInputs.cache
 /Users/phanordroberto/Projects/StudentGrading/Domain/obj/Debug/net8.0/Domain.AssemblyInfo.cs
 /Users/phanordroberto/Projects/StudentGrading/Domain/obj/Debug/net8.0/Domain.csproj.CoreCompileInputs.cache
+/Users/phanordroberto/Projects/StudentGrading/Domain/obj/Debug/net8.0/Domain.sourcelink.json
 /Users/phanordroberto/Projects/StudentGrading/Domain/obj/Debug/net8.0/Domain.dll
 /Users/phanordroberto/Projects/StudentGrading/Domain/obj/Debug/net8.0/refint/Domain.dll
 /Users/phanordroberto/Projects/StudentGrading/Domain/obj/Debug/net8.0/Domain.pdb

@@ -1,41 +1,52 @@
-﻿using Domain;
+﻿using Infrastructure.Data;
+using Domain.Interfaces;
 using Domain.Entities;
-using Infrastructure.Data;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
+using AutoMapper;
+using System.Security.Claims;
 
 namespace Application.Services
 {
     public class AuthService : IAuthService
     {
-        private readonly AppDbContext _context;
-        private readonly IPasswordHasher<Student> _passwordHasher;
+        private readonly UserManager<Users> _userManager;
+        private readonly SignInManager<Users> _signInManager;
+        private readonly IMapper _mapper;
 
-        public AuthService(AppDbContext context, IPasswordHasher<Student> passwordHasher)
-        {
-            _context = context;
-            _passwordHasher = passwordHasher;
+        public AuthService(
+            UserManager<Users> userManager, IMapper mapper,
+            SignInManager<Users> signInManager
+        ) {
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _mapper = mapper;
         }
 
-        public async Task<Student> RegisterAsync(string name, string email, string password)
+        public async Task<User> RegisterAsync(string name, string email, string password)
         {
             try
             {
-                var existedStudent = await _context.Student!.FirstOrDefaultAsync(e => e.Email == email);
+                var existedStudent = await _userManager.FindByEmailAsync(email);
 
                 if (existedStudent != null) throw new Exception("El correo ya esta en uso.");
 
-                var newStudent = new Student
+                var newIdentityUser = new Users
                 {
-                    Name = name,
+                    FullName = name,
                     Email = email,
-                    HashedPassword = _passwordHasher.HashPassword(null, password)
+                    UserName = email,
                 };
 
-                _context.Student!.Add(newStudent);
-                await _context.SaveChangesAsync();
+                var result = await _userManager.CreateAsync(newIdentityUser, password);
 
-                return newStudent;
+                if(!result.Succeeded)
+                {
+                    var errors = string.Join(", ", result.Errors.Select(e => e.Description));
+
+                    throw new Exception($"Error al registrar: {errors}");
+                }
+
+                return _mapper.Map<User>(newIdentityUser);
             }
             catch (Exception exception)
             {
@@ -43,23 +54,43 @@ namespace Application.Services
             }
         }
 
-        public async Task<Student> LoginAsync(string email, string password)
+        public async Task<User> LoginAsync(string email, string password, bool rememberMe)
         {
             try
             {
-                var existedStudent = await _context.Student!.FirstOrDefaultAsync(e => e.Email == email);
+                var findedUser = await _userManager.FindByEmailAsync(email);
 
-                if (existedStudent == null) throw new Exception("No existe estudiante con este correo.");
+                if (findedUser == null) throw new Exception("No existe usuario con este correo.");
 
-                if (existedStudent != null && _passwordHasher.VerifyHashedPassword(null, existedStudent.HashedPassword!, password) == PasswordVerificationResult.Failed)
-                    throw new Exception("Contraseeña incorrecta");
+                var result = await _signInManager.PasswordSignInAsync(findedUser, password, rememberMe, lockoutOnFailure: false);
 
-                return existedStudent!;
+                if (!result.Succeeded)
+                {
+                    throw new Exception("Contraseña incorrecta.");
+                }
+
+                var claims = new[]
+                {
+                    new Claim(ClaimTypes.GivenName, findedUser.FullName ?? string.Empty)
+                };
+
+                var addedClaimResult = await _userManager.AddClaimsAsync(findedUser, claims);
+
+                await _signInManager.RefreshSignInAsync(findedUser);
+
+                return _mapper.Map<User>(findedUser);
             }
             catch (Exception exception)
             {
                 throw new Exception($"{exception.Message}");
             }
+        }
+
+        public async Task<bool> SignOutAsync()
+        {
+            await _signInManager.SignOutAsync();
+
+            return true;
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using System.Security.Claims;
-using Domain;
-using Microsoft.AspNetCore.Authentication;
+﻿using Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Application.DTOs;
 
@@ -67,25 +65,7 @@ public class AuthController : Controller
 
         try
         {
-            var existedStudent = await _authService.LoginAsync(model.Email, model.Password);
-
-            var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Name, existedStudent.Name!),
-                new Claim(ClaimTypes.NameIdentifier, existedStudent.Id.ToString()),
-                new Claim(ClaimTypes.Email, existedStudent.Email!),
-            };
-
-            var identity = new ClaimsIdentity(claims, "AppCookie");
-            var principal = new ClaimsPrincipal(identity);
-
-            var authProperties = new AuthenticationProperties
-            {
-                IsPersistent = true,
-                ExpiresUtc = DateTimeOffset.UtcNow.AddHours(3),
-            };
-
-            await HttpContext.SignInAsync("AppCookie", principal, authProperties);
+            var existedStudent = await _authService.LoginAsync(model.Email, model.Password, model.RememberMe);            
 
             return RedirectToAction("Index", "Dashboard");
         }
@@ -100,7 +80,7 @@ public class AuthController : Controller
     [HttpGet]
     public async Task<IActionResult> Logout()
     {
-        await HttpContext.SignOutAsync("AppCookie");
+        await _authService.SignOutAsync();
 
         return RedirectToAction("Index", "Home");
     }

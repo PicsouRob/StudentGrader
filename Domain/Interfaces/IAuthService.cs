@@ -1,11 +1,12 @@
 ﻿using Domain.Entities;
 
-namespace Domain
+namespace Domain.Interfaces
 {
 	public interface IAuthService
 	{
-        Task<Student> RegisterAsync(string name, string email, string password);
-        Task<Student> LoginAsync(string email, string password);
+        Task<User> RegisterAsync(string name, string email, string password);
+        Task<User> LoginAsync(string email, string password, bool rememberMe);
+        Task<bool> SignOutAsync();
     }
 }
 

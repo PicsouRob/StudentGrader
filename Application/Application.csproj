@@ -11,14 +11,18 @@
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.0" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="DTOs\" />
     <None Remove="Services\" />
+    <None Remove="Mappings\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DTOs\" />
     <Folder Include="Services\" />
+    <Folder Include="Mappings\" />
   </ItemGroup>
 </Project>
