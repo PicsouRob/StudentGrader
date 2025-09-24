@@ -1,0 +1,25 @@
+﻿
+
+@if (!User.Identity?.IsAuthenticated ?? true)
+{
+    <div class="flex items-center gap-4 text-sm">
+        <a asp-controller="Auth" asp-action="Login"
+            class="px-3 py-2 rounded border hover:bg-orange-600 hover:text-white hover:border-orange-600 transition-view">
+            Iniciar Sesión
+        </a>
+
+        <a asp-area="" asp-controller="Auth" asp-action="Register"
+            class="px-3 py-2 rounded border hover:bg-orange-600 hover:text-white hover:border-orange-600 transition-view">
+            Crear Cuenta
+        </a>
+    </div>
+}
+else
+{
+    <a asp-area="" asp-controller="Profile" asp-action="Index"
+        class="px-3 py-2 rounded border hover:bg-orange-600 hover:text-white hover:border-orange-600 transition-view"
+    >
+        Mi Cuenta
+    </a>
+}
+

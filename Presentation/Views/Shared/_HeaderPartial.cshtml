@@ -1,0 +1,28 @@
+﻿
+
+<header class="absolute inset-x-0 top-0 z-10 w-full" x-data="{expanded: false}">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
+        <partial name="_LogoPartial" />
+
+        <ul class="hidden md:flex items-center gap-x-6">
+            <li>
+                <a asp-controller="Home" asp-action="Index" class="font-sans antialiased text-s hover:text-orange-500">Inicio</a>
+            </li>
+
+            <li>
+                <a asp-controller="Home" asp-action="Index" class="font-sans antialiased text-s hover:text-orange-500">Testimonio</a>
+            </li>
+
+            <li>
+                <a asp-controller="Home" asp-action="Index" class="font-sans antialiased text-s hover:text-orange-500">Acerca de Nosotros</a>
+            </li>
+
+            <li>
+                <a asp-controller="Home" asp-action="Index" class="font-sans antialiased text-s hover:text-orange-500">Contacto</a>
+            </li>
+        </ul>
+
+        <partial name="_AccountPartial" />
+    </div>
+</header>
+

@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "6GO9QgDBZyU=",
+  "success": true,
+  "projectFilePath": "/Users/phanordroberto/Projects/StudentGrading/Domain/Domain.csproj",
+  "expectedPackageFiles": [
+    "/Users/phanordroberto/.nuget/packages/microsoft.netcore.app.ref/8.0.18/microsoft.netcore.app.ref.8.0.18.nupkg.sha512",
+    "/Users/phanordroberto/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.18/microsoft.aspnetcore.app.ref.8.0.18.nupkg.sha512"
+  ],
+  "logs": []
+}
