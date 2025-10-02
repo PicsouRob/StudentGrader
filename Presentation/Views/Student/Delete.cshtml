@@ -1,0 +1,40 @@
+﻿@model Domain.Entities.Student
+
+<div class="max-w-md p-5 bg-white border border-dashed rounded-md shadow">
+    <form action="/student/delete?studentId=@Model.StudentId" method="post" class="space-y-6">
+
+        <p>Estas seguro de que quieres eliminar este estudiante? sinon presione al boton cancelar para cancelar la operacion.</p>
+        
+        <div class="text-sm text-red-600" role="alert">
+            @if (!string.IsNullOrEmpty(ViewData["Error"] as string))
+            {
+                @ViewData["Error"]
+            }
+        </div>
+        
+        <div class="space-y-2">
+            <p class="text-base font-medium">Nombre: @Model.Name</p>
+            <p class="text-base font-medium">Correo: @Model.Email</p>
+            <p class="text-base font-medium">Matricula: @Model.StudentId</p>
+            <p class="text-base font-medium">Fecha de Ingreso: @Model.EnrollmentDate.GetValueOrDefault().ToString("dd/MM/yyyy")</p>
+            <p class="text-base font-medium">Estado: 
+                @if(Model.Status == "Active")
+                {
+                    <span class="px-2 py-1 text-xs text-green-600 rounded bg-green-50">Activo</span>
+                }
+                else if (Model.Status == "Graduated")
+                {   
+                    <span class="px-2 py-1 text-xs text-yellow-600 rounded bg-yellow-50">Graduado</span>
+                } else {
+                    <span class="px-2 py-1 text-xs text-red-600 rounded bg-red-50">Suspendido</span>
+                }
+             </p>
+            <p class="text-base font-medium">Telefono: @Model.PhoneNumber</p>
+        </div>
+
+        <button type="submit" class="w-full px-4 py-2 font-medium text-white transition duration-150 ease-in-out bg-red-600 rounded shadow w-ful hover:bg-red-700">
+            Confirmar
+        </button>
+    </form>
+</div>
+

@@ -16,7 +16,7 @@ public class AuthController : Controller
     {
         if (User.Identity!.IsAuthenticated)
         {
-            return RedirectToAction("Index", "Dashboard");
+            return RedirectToAction("Index", "Home");
         }
 
         return View(new RegisterDto());
@@ -49,7 +49,7 @@ public class AuthController : Controller
     {
         if(User.Identity!.IsAuthenticated)
         {
-            return RedirectToAction("Index", "Dashboard");
+            return RedirectToAction("Index", "Home");
         }
 
         return View(new LoginDto());
@@ -65,9 +65,9 @@ public class AuthController : Controller
 
         try
         {
-            var existedStudent = await _authService.LoginAsync(model.Email, model.Password, model.RememberMe);            
+            var existedStudent = await _authService.LoginAsync(model.Email, model.Password, model.RememberMe);
 
-            return RedirectToAction("Index", "Dashboard");
+            return RedirectToAction("Index", "Home");
         }
         catch (Exception ex)
         {

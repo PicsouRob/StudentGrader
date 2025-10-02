@@ -1,0 +1,70 @@
+﻿@model Application.DTOs.StudentDto
+
+<div class="max-w-3xl px-4 py-6">
+    <div class="p-6 bg-white shadow rounded-2xl md:p-10">
+        <div class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-800">Agregar Estudiante</h2>
+            <p class="mt-2 text-gray-500">
+                Llena los campos para poder agregar un estudiante.
+            </p>
+        </div>
+
+        <div class="text-sm text-red-600" role="alert">
+            @if (!string.IsNullOrEmpty(ViewData["Error"] as string))
+            {
+                @ViewData["Error"]
+            }
+        </div>
+
+        <form action="/student/create" method="post">
+            <div class="grid gap-6 md:grid-cols-2">
+                <div class="space-y-1 md:col-span-2">
+                    <label asp-for="Name" for="Name" class="block mb-1 text-sm font-medium text-gray-700">Nombre Completo</label>
+                    <input asp-for="Name" type="text" id="Name" class="w-full px-4 py-3 transition duration-150 ease-in-out border border-gray-300 rounded-lg" placeholder="John Doe">
+                    <span asp-validation-for="Name" class="mt-1 text-xs text-red-600"></span>
+                </div>
+
+                <div class="space-y-1 md:col-span-2">
+                    <label asp-for="Email" for="Email" class="block mb-1 text-sm font-medium text-gray-700">Correo Electronico</label>
+                    <input asp-for="Email" type="email" id="Email" class="w-full px-4 py-3 transition duration-150 ease-in-out border border-gray-300 rounded-lg" placeholder="johndoe@gmail.com">
+                    <span asp-validation-for="Email" class="mt-1 text-xs text-red-600"></span>
+                </div>
+
+                <div class="space-y-1">
+                    <label asp-for="PhoneNumber" for="PhoneNumber"
+                        class="block mb-1 text-sm font-medium text-gray-700">Numero de Telefono</label>
+                    <input asp-for="PhoneNumber" type="tel" id="PhoneNumber"
+                        class="w-full px-4 py-3 transition duration-150 ease-in-out border border-gray-300 rounded-lg"
+                        placeholder="8094298592">
+                    <span asp-validation-for="PhoneNumber" class="mt-1 text-xs text-red-600"></span>
+                </div>
+
+                <div class="space-y-1">
+                    <label asp-for="EnrollmentDate" for="EnrollmentDate" class="block mb-1 text-sm font-medium text-gray-700">Fecha de Ingreso</label>
+                    <input asp-for="EnrollmentDate" type="date" id="EnrollmentDate"
+                        class="w-full px-4 py-3 transition duration-150 ease-in-out border border-gray-300 rounded-lg">
+                    <span asp-validation-for="EnrollmentDate" class="mt-1 text-xs text-red-600"></span>
+                </div>
+
+                <div class="space-y-1 md:col-span-2">
+                    <label asp-for="Status" for="Status"
+                        class="block mb-1 text-sm font-medium text-gray-700">Estado</label>
+
+                    <select asp-for="Status" id="Status" class="w-full px-4 py-3 transition duration-150 ease-in-out bg-transparent border border-gray-300 rounded-lg">
+                        <option selected value="Active">Activo</option>
+                        <option value="Graduated">Graduado</option>
+                        <option value="Suspended">Suspendido</option>
+                    </select>
+
+                    <span asp-validation-for="Status" class="mt-1 text-xs text-red-600"></span>
+                </div>
+
+            <div class="md:col-span-2">
+                <button type="submit" class="w-full px-4 py-3 font-medium text-white transition duration-150 ease-in-out bg-orange-600 rounded-lg shadow-md hover:bg-orange-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2">
+                    Añadir Estudiante
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+

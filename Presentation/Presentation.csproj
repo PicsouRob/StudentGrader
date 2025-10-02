@@ -29,9 +29,13 @@
   <ItemGroup>
     <None Remove="Views\Auth\" />
     <None Remove="Views\Dashboard\" />
+    <None Remove="Views\Dashboard\Student\" />
+    <None Remove="Controllers\Student\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Auth\" />
     <Folder Include="Views\Dashboard\" />
+    <Folder Include="Views\Dashboard\Student\" />
+    <Folder Include="Controllers\Student\" />
   </ItemGroup>
 </Project>

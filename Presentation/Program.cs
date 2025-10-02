@@ -28,6 +28,7 @@ builder.Services.AddIdentity<Users, IdentityRole>(options =>
 
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IPasswordHasher<Student>, PasswordHasher<Student>>();
+builder.Services.AddScoped<StudentService>();
 
 // Authentication
 builder.Services.AddAuthentication("AppCookie").AddCookie("AppCookie", options =>
