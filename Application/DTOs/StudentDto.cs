@@ -1,4 +1,3 @@
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace Application.DTOs
@@ -31,6 +30,10 @@ namespace Application.DTOs
         [Required(ErrorMessage = "El Numero de Telefono es obligatorio")]
         [StringLength(10, MinimumLength = 10, ErrorMessage = "El Numero de Telefono debe tener 10 caracteres")]
         public string? PhoneNumber { get; set; }
+
+        public DateTime? CreatedAt { get; set; } = DateTime.Now;
+
+        public DateTime? UpdatedAt { get; set; } = DateTime.Now;
     }
 }
 

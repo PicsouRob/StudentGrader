@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Domain.Entities;
 using Domain.Interfaces;
 using Infrastructure.Data;
@@ -52,7 +53,6 @@ namespace Application.Services
 
         public async Task<bool> UpdateStudentAsync(Student student)
         {
-            Console.WriteLine($"Student: {student.Id}");
             try
             {
                 var existedStudent = await GetStudentByIdAsync(student.StudentId!) ??

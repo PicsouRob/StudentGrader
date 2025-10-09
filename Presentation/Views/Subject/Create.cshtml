@@ -1,0 +1,80 @@
+@model Application.DTOs.SubjectDto;
+
+<div class="max-w-3xl px-4">
+    <div class="py-6">
+        <a asp-controller="Subject" asp-action="Index" aria-expanded="false" data-dropdown-toggle="dropdown-user"
+            class="flex items-center text-sm rounded gap-x-2 min-w-min">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-arrow-left-icon lucide-arrow-left">
+                <path d="m12 19-7-7 7-7" />
+                <path d="M19 12H5" />
+            </svg>
+
+            Volver atras
+        </a>
+    </div>
+
+    <div class="p-6 bg-white shadow rounded-2xl md:p-10">
+        <div class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-800">Agregar Materia</h2>
+            <p class="mt-2 text-gray-500">
+                Llena los campos para poder agregar una materia.
+            </p>
+        </div>
+
+        <div class="text-sm text-red-600" role="alert">
+            @if (!string.IsNullOrEmpty(ViewData["Error"] as string))
+            {
+                @ViewData["Error"]
+            }
+        </div>
+
+        <form action="/subject/create" method="post">
+            <div class="space-y-4">
+                <div class="space-y-1">
+                    <label asp-for="Name" for="Name" class="block mb-1 text-sm font-medium text-gray-700">Nombre</label>
+                    <input asp-for="Name" type="text" id="Name"
+                        class="w-full px-4 py-3 transition duration-150 ease-in-out border border-gray-300 rounded-lg"
+                        placeholder="John Doe">
+                    <span asp-validation-for="Name" class="mt-1 text-xs text-red-600"></span>
+                </div>
+
+                <div class="space-y-1">
+                    <label asp-for="Code" for="Code" class="block mb-1 text-sm font-medium text-gray-700">Code</label>
+                    <input asp-for="Code" type="text" id="Code"
+                        class="w-full px-4 py-3 transition duration-150 ease-in-out border border-gray-300 rounded-lg"
+                        placeholder="ej: 1234">
+                    <span asp-validation-for="Code" class="mt-1 text-xs text-red-600"></span>
+                </div>
+
+                <div class="space-y-1">
+                    <label asp-for="Credits" for="Credits"
+                        class="block mb-1 text-sm font-medium text-gray-700">Creditos</label>
+                    <input asp-for="Credits" type="number" id="Credits"
+                        class="w-full px-4 py-3 transition duration-150 ease-in-out border border-gray-300 rounded-lg"
+                        placeholder="8094298592">
+                    <span asp-validation-for="Credits" class="mt-1 text-xs text-red-600"></span>
+                </div>
+
+                <div class="space-y-1">
+                    <label asp-for="Description" for="Description"
+                        class="block mb-1 text-sm font-medium text-gray-700">Descripción</label>
+                    
+                    <textarea asp-for="Description" id="Description"
+                        class="w-full px-4 py-3 transition duration-150 ease-in-out border border-gray-300 rounded-lg"    
+                    ></textarea>
+                    
+                    <span asp-validation-for="Description" class="mt-1 text-xs text-red-600"></span>
+                </div>
+
+                <div class="md:col-span-2">
+                    <button type="submit"
+                        class="w-full px-4 py-3 font-medium text-white transition duration-150 ease-in-out bg-orange-600 rounded-lg shadow-md hover:bg-orange-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2">
+                        Añadir Materia
+                    </button>
+                </div>
+        </form>
+    </div>
+</div>
+

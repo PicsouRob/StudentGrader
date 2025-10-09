@@ -1,6 +1,20 @@
-﻿@model Application.DTOs.StudentDto
+﻿@model Application.DTOs.StudentDto;
 
-<div class="max-w-3xl px-4 py-6">
+<div class="max-w-3xl px-4">
+    <div class="py-6">
+        <a asp-controller="Student" asp-action="Index" aria-expanded="false" data-dropdown-toggle="dropdown-user"
+            class="flex items-center text-sm rounded gap-x-2 min-w-min">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-arrow-left-icon lucide-arrow-left">
+                <path d="m12 19-7-7 7-7" />
+                <path d="M19 12H5" />
+            </svg>
+
+            Volver atras
+        </a>
+    </div>
+
     <div class="p-6 bg-white shadow rounded-2xl md:p-10">
         <div class="mb-8">
             <h2 class="text-2xl font-bold text-gray-800">Agregar Estudiante</h2>

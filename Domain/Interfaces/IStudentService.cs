@@ -10,6 +10,7 @@ namespace Domain.Interfaces
         Task<bool> UpdateStudentAsync(Student student);
         Task<IEnumerable<Student>> GetStudentsAsync();
         Task<bool> DeleteStudentAsync(string studentId);
+        Task<string> GenerateUniqueStudentIdAsync();
     }
 }
 

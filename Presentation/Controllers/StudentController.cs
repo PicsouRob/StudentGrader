@@ -1,15 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Application.Services;
 using Application.DTOs;
 using Domain.Entities;
+using Domain.Interfaces;
 
 namespace Presentation.Controllers
 {
     public class StudentController : Controller
     {
-        private readonly StudentService _studentService;
+        private readonly IStudentService _studentService;
 
-        public StudentController(StudentService studentService)
+        public StudentController(IStudentService studentService)
         {
             _studentService = studentService;
         }
@@ -72,7 +72,6 @@ namespace Presentation.Controllers
         public async Task<IActionResult> Update(string studentId)
         {
             var student = await _studentService.GetStudentByIdAsync(studentId);
-            Console.WriteLine($"Student: {student.Id}");
 
             if (student == null)
             {

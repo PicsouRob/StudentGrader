@@ -45,38 +45,38 @@
                                 <li>
                                     <div class="flex items-center p-2 rounded-sm hover:bg-gray-100 dark:hover:bg-gray-600">
                                         <input id="filter-radio-example-1" type="radio" value="" name="filter-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                        <label for="filter-radio-example-1" class="w-full text-sm font-medium text-gray-900 rounded-sm ms-2 dark:text-gray-300">Last day</label>
+                                        <label for="filter-radio-example-1" class="w-full text-sm font-medium text-gray-900 rounded-sm ms-2 dark:text-gray-300">Ultimo dia</label>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="flex items-center p-2 rounded-sm hover:bg-gray-100 dark:hover:bg-gray-600">
                                         <input checked="" id="filter-radio-example-2" type="radio" value="" name="filter-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                        <label for="filter-radio-example-2" class="w-full text-sm font-medium text-gray-900 rounded-sm ms-2 dark:text-gray-300">Last 7 days</label>
+                                        <label for="filter-radio-example-2" class="w-full text-sm font-medium text-gray-900 rounded-sm ms-2 dark:text-gray-300">Ultimos 7 dias</label>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="flex items-center p-2 rounded-sm hover:bg-gray-100 dark:hover:bg-gray-600">
                                         <input id="filter-radio-example-3" type="radio" value="" name="filter-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                        <label for="filter-radio-example-3" class="w-full text-sm font-medium text-gray-900 rounded-sm ms-2 dark:text-gray-300">Last 30 days</label>
+                                        <label for="filter-radio-example-3" class="w-full text-sm font-medium text-gray-900 rounded-sm ms-2 dark:text-gray-300">Ultimos 30 dias</label>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="flex items-center p-2 rounded-sm hover:bg-gray-100 dark:hover:bg-gray-600">
                                         <input id="filter-radio-example-4" type="radio" value="" name="filter-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                        <label for="filter-radio-example-4" class="w-full text-sm font-medium text-gray-900 rounded-sm ms-2 dark:text-gray-300">Last month</label>
+                                        <label for="filter-radio-example-4" class="w-full text-sm font-medium text-gray-900 rounded-sm ms-2 dark:text-gray-300">Ultimo mes</label>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="flex items-center p-2 rounded-sm hover:bg-gray-100 dark:hover:bg-gray-600">
                                         <input id="filter-radio-example-5" type="radio" value="" name="filter-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                        <label for="filter-radio-example-5" class="w-full text-sm font-medium text-gray-900 rounded-sm ms-2 dark:text-gray-300">Last year</label>
+                                        <label for="filter-radio-example-5" class="w-full text-sm font-medium text-gray-900 rounded-sm ms-2 dark:text-gray-300">Año pasado</label>
                                     </div>
                                 </li>
                             </ul>
                         </div>
                     </div>
 
-                    <label for="table-search" class="sr-only">Search</label>
+                    <label for="table-search" class="sr-only">Buscar</label>
                     
                     <div class="relative flex items-center px-2 bg-white border rounded">
                         <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" width="20" height="20" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
@@ -105,12 +105,6 @@
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Estado
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Fecha de ingreso
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Telefono
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Acciones
@@ -149,14 +143,6 @@
                                     } else {
                                         <span class="px-2 py-1 text-xs text-red-600 rounded bg-red-50">Suspendido</span>
                                     }
-                                </td>
-
-                                <td class="px-6 py-4">
-                                    @Html.DisplayFor(modelItem => item.EnrollmentDate)
-                                </td>
-
-                                <td class="px-6 py-4">
-                                    @Html.DisplayFor(modelItem => item.PhoneNumber)
                                 </td>
 
                                 <td class="flex items-center gap-3 px-6 py-4">

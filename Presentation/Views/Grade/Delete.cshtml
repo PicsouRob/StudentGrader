@@ -1,0 +1,61 @@
+@model Domain.Entities.Grade
+
+<div class="py-6">
+    <a asp-controller="Grade" asp-action="Index" aria-expanded="false" data-dropdown-toggle="dropdown-user"
+        class="flex items-center text-sm rounded gap-x-2 min-w-min">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-arrow-left-icon lucide-arrow-left">
+            <path d="m12 19-7-7 7-7" />
+            <path d="M19 12H5" />
+        </svg>
+
+        Volver atras
+    </a>
+</div>
+
+<div class="max-w-md p-5 bg-white border border-dashed rounded-md shadow">
+    <form action="/grade/delete?gradeId=@Model.Id" method="post" class="space-y-6">
+
+        <h1 class="text-xl font-bold">Eliminar Calificacion</h1>
+
+        <p class="text-sm">Estas seguro de que quieres eliminar esta calificación? sino presione al boton cancelar para
+            anular la operacion.
+        </p>
+
+        <div class="text-sm text-red-600" role="alert">
+            @if (!string.IsNullOrEmpty(ViewData["Error"] as string))
+            {
+                @ViewData["Error"]
+            }
+        </div>
+
+        <div class="space-y-4">
+            <p class="grid grid-cols-2 text-base font-medium">Estudiante: <span class="font-normal">@Model.Student!.Name</span></p>
+            <p class="grid grid-cols-2 text-base font-medium">Asignatura: <span class="font-normal">@Model.Subject!.Name</span></p>
+            <p class="grid grid-cols-2 text-base font-medium">Calificación 1: <span class="font-normal">@Model.Grade1</span></p>
+            <p class="grid grid-cols-2 text-base font-medium">Calificación 2: <span class="font-normal">@Model.Grade2</span></p>
+            <p class="grid grid-cols-2 text-base font-medium">Calificación 3: <span class="font-normal">@Model.Grade3</span></p>
+            <p class="grid grid-cols-2 text-base font-medium">Calificación 4: <span class="font-normal">@Model.Grade4</span></p>
+            <p class="grid grid-cols-2 text-base font-medium">Examen: <span class="font-normal">@Model.Exam</span></p>
+            <p class="grid grid-cols-2 text-base font-medium">Calificación Total: <span class="font-normal">@Model.TotalGrade</span></p>
+            <p class="grid grid-cols-2 text-base font-medium">Clasificación: <span class="font-normal">@Model.Classification</span></p>
+            <p class="grid grid-cols-2 text-base font-medium">Estado: <span class="font-normal">
+                @if(Model.State == "approved")
+                {
+                    <span>Aprobado</span>
+                }
+                else
+                {
+                    <span>Reprobado</span>
+                }
+            </span></p>
+        </div>
+
+        <button type="submit"
+            class="w-full px-4 py-2 font-medium text-white transition duration-150 ease-in-out bg-red-600 rounded shadow w-ful hover:bg-red-700">
+            Confirmar
+        </button>
+    </form>
+</div>
+

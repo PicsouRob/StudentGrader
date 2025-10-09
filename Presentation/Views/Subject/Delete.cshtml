@@ -1,0 +1,45 @@
+@model Domain.Entities.Subject
+
+<div class="py-6">
+    <a asp-controller="Subject" asp-action="Index" aria-expanded="false" data-dropdown-toggle="dropdown-user"
+        class="flex items-center text-sm rounded gap-x-2 min-w-min">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-arrow-left-icon lucide-arrow-left">
+            <path d="m12 19-7-7 7-7" />
+            <path d="M19 12H5" />
+        </svg>
+
+        Volver atras
+    </a>
+</div>
+
+<div class="max-w-md p-5 bg-white border border-dashed rounded-md shadow">
+    <form action="/subject/delete?subjectId=@Model.Id" method="post" class="space-y-6">
+
+        <h1 class="text-xl font-bold">Eliminar Materia @Model.Name</h1>
+
+        <p class="text-sm">Estas seguro de que quieres eliminar esta materia? sino presione al boton cancelar para anular la
+            operacion.</p>
+
+        <div class="text-sm text-red-600" role="alert">
+            @if (!string.IsNullOrEmpty(ViewData["Error"] as string))
+            {
+                @ViewData["Error"]
+            }
+        </div>
+
+        <div class="space-y-2">
+            <p class="text-base font-medium">Nombre: @Model.Name</p>
+            <p class="text-base font-medium">Descripción: @Model.Description</p>
+            <p class="text-base font-medium">Codigo: @Model.Code</p>
+            <p class="text-base font-medium">Creditos: @Model.Credits</p>
+        </div>
+
+        <button type="submit"
+            class="w-full px-4 py-2 font-medium text-white transition duration-150 ease-in-out bg-red-600 rounded shadow w-ful hover:bg-red-700">
+            Confirmar
+        </button>
+    </form>
+</div>
+
